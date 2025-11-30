@@ -3,6 +3,7 @@ from fastapi import FastAPI, HTTPException, Body, Query, status, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel, Field, EmailStr, constr, StringConstraints
 import uvicorn
+import os
 
 from User_Management import read_user, add_user, update_user
 
@@ -123,7 +124,9 @@ def create_user(payload: UserCreateModel = Body(...),
 # Run the app
 # -------------------------
 if __name__ == "__main__":
+     port = int(os.environ.get("PORT", 5603))
+     
     uvicorn.run("app:app", 
                 host="0.0.0.0", 
-                port=5603, 
+                port=port, 
                 reload=True)

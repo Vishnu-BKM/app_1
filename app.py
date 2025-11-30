@@ -124,8 +124,8 @@ def create_user(payload: UserCreateModel = Body(...),
 # Run the app
 # -------------------------
 if __name__ == "__main__":
-     port = int(os.environ.get("PORT", 5603))
-     
+    port = int(os.environ.get("PORT", 5603))
+
     uvicorn.run("app:app", 
                 host="0.0.0.0", 
                 port=port, 
